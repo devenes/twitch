@@ -4,6 +4,7 @@ import { Chat, Channel } from "stream-chat-react";
 import "@stream-io/stream-chat-css/dist/css/index.css";
 import Auth from "./components/Auth";
 import MessagingContainer from "./components/MessagingContainer";
+import Video from "./components/Video";
 
 const filters = { type: "messaging" };
 const options = { state: true, presence: true, limit: 10 };
@@ -15,7 +16,7 @@ const App = () => {
   const [clientReady, setClientReady] = useState(false);
   const [channel, setChannel] = useState(null);
 
-  const authToken = true;
+  const authToken = false;
 
   useEffect(() => {
     const setupClient = async () => {
@@ -63,6 +64,7 @@ const App = () => {
         >
           {/* <ChannelList filters={filters} sort={sort} options={options} /> */}
           <Channel channel={channel}>
+            <Video />
             <MessagingContainer />
           </Channel>
         </Chat>
