@@ -50,8 +50,19 @@ const App = () => {
 
   if (!clientReady) return null;
 
+  const customStyles: CustomStyles = {
+    "--primary-color": "blue",
+    "--md-font": "1.2rem",
+    "--xs-m": "1.2rem",
+    "--xs-p": "1.2rem",
+  };
+
   return (
-    <Chat client={client} darkMode={true}>
+    <Chat
+      client={client}
+      //darkMode={true}
+      customStyles={customStyles}
+    >
       <ChannelList filters={filters} sort={sort} options={options} />
       <Channel channel={channel}>
         <Window>
