@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StreamChat } from "stream-chat";
-import {
-  Chat,
-  Channel,
-  ChannelHeader,
-  ChannelList,
-  MessageList,
-  MessageInput,
-  Thread,
-  Window,
-} from "stream-chat-react";
+import { Chat, Channel } from "stream-chat-react";
 import "@stream-io/stream-chat-css/dist/css/index.css";
 import Auth from "./components/Auth";
+import MessagingContainer from "./components/MessagingContainer";
 
 const filters = { type: "messaging" };
 const options = { state: true, presence: true, limit: 10 };
@@ -69,14 +61,9 @@ const App = () => {
           //darkMode={true}  -used customStyles instead of that
           customStyles={customStyles}
         >
-          <ChannelList filters={filters} sort={sort} options={options} />
+          {/* <ChannelList filters={filters} sort={sort} options={options} /> */}
           <Channel channel={channel}>
-            <Window>
-              <ChannelHeader />
-              <MessageList />
-              <MessageInput />
-            </Window>
-            <Thread />
+            <MessagingContainer />
           </Channel>
         </Chat>
       )}
