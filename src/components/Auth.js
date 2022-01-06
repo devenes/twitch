@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const Auth = ({}) => {
+  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
@@ -34,15 +35,21 @@ const Auth = ({}) => {
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <input
-            type="text"
-            id="password-check"
-            name="password-check"
-            placeholder="confirm password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          {!isLogin && (
+            <input
+              type="text"
+              id="password-check"
+              name="password-check"
+              placeholder="confirm password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          )}
           {error && <p>Make sure the passwords match</p>}
           <button onClick={handleSubmit}>GO!</button>
+        </div>
+        <div className="auth-options">
+          <button onClick={() => setIsLogin(false)}>Sign up</button>
+          <button onClick={() => setIsLogin(true)}>Login</button>
         </div>
       </div>
     </div>
