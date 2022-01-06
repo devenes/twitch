@@ -50,8 +50,20 @@ const Auth = ({}) => {
           </button>
         </div>
         <div className="auth-options">
-          <button onClick={() => setIsLogin(false)}>Sign up</button>
-          <button onClick={() => setIsLogin(true)}>Login</button>
+          <button
+            onClick={() => setIsLogin(false)}
+            style={{
+              backgroundColor: !isLogin ? "#1D162E" : "#070a0d",
+            }}
+          >
+            Sign up
+          </button>
+          <button
+            onClick={() => setIsLogin(true)}
+            style={{ backgroundColor: isLogin ? "#1D162E" : "#070a0d" }}
+          >
+            Login
+          </button>
         </div>
       </div>
     </div>
