@@ -45,7 +45,9 @@ const Auth = ({}) => {
             />
           )}
           {error && <p>Make sure the passwords match</p>}
-          <button onClick={handleSubmit}>GO!</button>
+          <button className="standard-button" onClick={handleSubmit}>
+            GO!
+          </button>
         </div>
         <div className="auth-options">
           <button onClick={() => setIsLogin(false)}>Sign up</button>
