@@ -1,75 +1,64 @@
 import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { StreamChat } from "stream-chat";
 import { Chat, Channel } from "stream-chat-react";
-import "@stream-io/stream-chat-css/dist/css/index.css";
 import Auth from "./components/Auth";
 import MessagingContainer from "./components/MessagingContainer";
 import Video from "./components/Video";
+import "stream-chat-css/dist/css/index.css";
+import { customStyles } from "./styles/cutomStyles";
 
-const filters = { type: "messaging" };
-const options = { state: true, presence: true, limit: 10 };
-const sort = { last_message_at: -1 };
-
-const client = StreamChat.getInstance("64vdjrsdr4jb");
+const client = StreamChat.getInstance("62jj2wpgzp9u");
 
 const App = () => {
-  const [clientReady, setClientReady] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [channel, setChannel] = useState(null);
+  const [users, setUsers] = useState(null);
 
-  const authToken = false;
+  const authToken = cookies.AuthToken;
 
-  useEffect(() => {
-    const setupClient = async () => {
-      try {
-        await client.connectUser(
-          {
-            id: "dave-matthews",
-            name: "Dave Matthews",
-          },
+  console.log(authToken);
 
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGF2ZS1tYXR0aGV3cyJ9.Ulm8YYe_5dXbiorgqGgUQ45FWWXlnP7Njq4IHc9aUmM"
-        );
-
-        const channel = await client.channel("gaming", "gaming-demo", {
-          name: "Gaming Demo",
-        });
-        setChannel(channel);
-
-        setClientReady(true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    setupClient();
+  useEffect(async () => {
+    if (authToken) {
+      const { users } = await client.queryUsers({ role: "user" });
+      setUsers(users);
+    }
   }, []);
 
-  if (!clientReady) return null;
-
-  const customStyles: CustomStyles = {
-    "--primary-color": "blue",
-    "--md-font": "1.2rem",
-    "--xs-m": "1.2rem",
-    "--xs-p": "1.2rem",
+  const setupClient = async () => {
+    try {
+      await client.connectUser(
+        {
+          id: cookies.UserId,
+          name: cookies.Name,
+          hashedPassword: cookies.HashedPassword,
+        },
+        authToken
+      );
+      const channel = await client.channel("gaming", "gaming-demo", {
+        name: "Gaming Demo",
+      });
+      setChannel(channel);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  if (authToken) setupClient();
+
   return (
-    <>
+    <div>
       {!authToken && <Auth />}
       {authToken && (
-        <Chat
-          client={client}
-          //darkMode={true}  -used customStyles instead of that
-          customStyles={customStyles}
-        >
-          {/* <ChannelList filters={filters} sort={sort} options={options} /> */}
+        <Chat client={client} customStyles={customStyles}>
           <Channel channel={channel}>
             <Video />
-            <MessagingContainer />
+            <MessagingContainer users={users} />
           </Channel>
         </Chat>
       )}
-    </>
+    </div>
   );
 };
 
