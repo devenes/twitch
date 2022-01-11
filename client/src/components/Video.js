@@ -5,6 +5,7 @@ const Video = () => {
     <div className="video-container">
       <ReactPlayer
         url={"https://www.youtube.com/watch?v=63x11iR5gjo"}
+        //for test
         muted={true}
         controls={false}
         playing={true}
