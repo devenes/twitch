@@ -13,7 +13,6 @@ app.use(express.json());
 app.post("/signup", async (req, res) => {
   try {
     const { username, password } = req.body;
-
     const userId = uuidv1();
     const hashedPassword = await bcrypt.hash(password, 10);
     const client = connect(
@@ -61,6 +60,7 @@ app.post("/login", async (req, res) => {
     } else {
       res.status(500).json({ message: "Login failed" });
     }
+
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
