@@ -1,20 +1,42 @@
-# Getting Started with Twitch Clone
+# Getting Started with Twitcher
+
+A Messenger App built in React and Node.js using getStream.io. This project is a clone of an online stream platform. The purpose of this project is to provide a quick and easy way to get started with streaming and chat applications. The project was build using educational content created by Ania Kubow.
 
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Definining Credentials
+
+Define your [Get Stream](https://getstream.io/) credentials in `.env` file:
+
+```
+API_KEY={your_key}
+API_SECRET={your_secret}
+APP_ID={your_id}
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm i`
+
+Install all the packages you need by running the command in your terminal. This will install all the dependencies listed in `package.json`.
+
+### `npm run start:frontend`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload if you make edits.
+
+### `npm run start:backend`
+
+This will start the server on [http://localhost:8000](http://localhost:8000).
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
 ### `npm test`
 
