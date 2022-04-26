@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { FaHorseHead, FaSmile } from "react-icons/fa";
 
 const UserList = ({ users }) => {
