@@ -1,6 +1,6 @@
 # Getting Started with Twitcher
 
-A Messenger App built in React and Node.js using getStream.io. This project is a clone of an online stream platform. The purpose of this project is to provide a quick and easy way to get started with streaming and chat applications. The project was build using educational content created by Ania Kubow.
+A Messenger App built in React and Node.js using getStream.io. This project is a clone of an online stream platform. The purpose of this project is to provide a quick and easy way to get started with streaming and chat applications. The project was built using the educational content created by Ania Kubow.
 
 ## Getting Started with Create React App
 
@@ -92,3 +92,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Resources
+
+[Chat App with Authentication](https://youtu.be/xyiuBEBv0_0)
+
+[Chat Messaging Docs](https://getstream.io/chat/docs/)
+
+[React Chat SDK Messaging Components](https://getstream.io/chat/sdk/react/)
